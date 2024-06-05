@@ -15,6 +15,7 @@ import HomeProduct from './components/HomeProduct.vue'
   <HomeNew />
   <HomeHot />
   <HomeProduct />
+  <!-- <HomePanel/> -->
 <!-- 测试面板组件 -->
   <!-- <HomePanel title="人气推荐" sub-title="人气推荐 好多商品">
     <div>
