@@ -35,6 +35,21 @@ const tabChange=()=>{
   getGoodList()
 }
 
+//加载更多
+const disabled=ref(false)
+const load= async()=>{
+  console.log('加载更多数据咯');
+  //获取下一页数据
+  reqData.value.page++
+  const res=await getSubCategoryAPI(reqData.value)
+  //数组拼接
+  goodList.value=[...goodList.value,...res.result.items]
+  //加载完毕停止监听
+  if(res.result.items.length===0){
+    disabled.value=true
+  }
+}
+
 </script>
 
 <template>
@@ -48,12 +63,16 @@ const tabChange=()=>{
       </el-breadcrumb>
     </div>
     <div class="sub-container">
+      <!-- tab-change点击切换 -->
       <el-tabs v-model="reqData.sortField" @tab-change="tabChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
       </el-tabs>
-      <div class="body">
+      <!-- 在要实现滚动加载的列表上添加v-infinite-scroll，并赋值相应的加载方法
+      ，可实现滚动到底部时自动执行加载方法。
+    :infinite-scroll-disable停止加载 -->
+      <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="disabled">
          <!-- 商品列表-->
          <GoodsItem v-for="goods in goodList" :goods="goods" :key="goods.id"/>
       </div>
