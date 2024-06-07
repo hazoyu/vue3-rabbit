@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
     goods:{
-        type:Object,
+        type:Object, //  对象
         default:()=>{}
     }
 })
