@@ -78,7 +78,7 @@ watch([elementX,elementY,isOutside],()=>{
     <!-- 放大镜大图 -->
     <div class="large" :style="[
       {
-        backgroundImage: `url(${imageList[0]})`,
+        backgroundImage: `url(${imageList[activeIndex]})`,
         backgroundPositionX: `${positionX}px`,
         backgroundPositionY: `${positionY}px`,
       },
