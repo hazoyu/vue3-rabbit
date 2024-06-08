@@ -2,8 +2,13 @@
 import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
-import {loginAPI} from '@/apis/user'
+// import {loginAPI} from '@/apis/user'
 import {useRouter } from 'vue-router'
+
+import { useUserStore } from '@/stores/user'
+
+const userStore=useUserStore()
+
 //表单校验(账号名+密码)
 
 //1.准备表单对象
@@ -40,17 +45,21 @@ const rules = {
 //3.获取form实例做统一校验
 const formRef=ref(null)
 const router=useRouter()
-const doLogin=()=>{//validate的参数是一个回调函数。该回调函数在校验结束后被调用，是否校验成功和未通过校验的字段。
-  const {account,password}=form.value
+const doLogin=()=>{
+  //validate的参数是一个回调函数。该回调函数在校验结束后被调用，是否校验成功和未通过校验的字段。
+  const { account,password }=form.value
   
   formRef.value.validate(async (valid)=>{
     //valid:所有表单都通过校验 才为true
-    console.log(valid);
+    console.log('valid',valid);
     //以参数为判断条件 如果通过校验才执行登录逻辑
     if(valid){
-      //TODO LOGIN
-    const res=  await loginAPI({account,password})
-    console.log(res);
+    //TODO LOGIN
+
+    // const res=  await loginAPI({account,password})
+    await userStore.getUserInfo({ account,password })
+    // console.log(res);
+
     //1.提示用户    success成功
     ElMessage({type:'success' ,message:'登录成功'})
     //2.跳转页面
