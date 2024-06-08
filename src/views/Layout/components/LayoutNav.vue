@@ -9,7 +9,7 @@
         <!-- 多模版渲染 区分登录状态和非登录状态 -->
 
         <!-- 适配思路: 登录时显示第一块 非登录时显示第二块  是否有token -->
-        <template v-if="true">
+        <template v-if="false">
           <!-- <RouterLink/> -->
           <li><a href="javascript:;"><i class="iconfont icon-user"></i>周杰伦</a></li>
           <li>
@@ -23,7 +23,7 @@
           <li><a href="javascript:;">会员中心</a></li>
         </template>
         <template v-else>
-          <li><a href="javascript:;">请先登录</a></li>
+          <li><a href="javascript:;" @click="$router.push('/login')">请先登录</a></li>
           <li><a href="javascript:;">帮助中心</a></li>
           <li><a href="javascript:;">关于我们</a></li>
         </template>
