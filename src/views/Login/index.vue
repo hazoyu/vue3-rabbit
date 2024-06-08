@@ -12,7 +12,7 @@ const form = ref({
 })
 
 //2.准备规则对象
-const rules = ({
+const rules = {
   account: [
     { required: true, message: '用户名不能为空', trigger: 'blur' }
   ],
@@ -33,9 +33,16 @@ const rules = ({
       }
     }
   ]
-})
+}
 
-
+//3.获取form实例做统一校验
+const formRef=ref(null)
+const doLogin=()=>{//validate的参数是一个回调函数。该回调函数在校验结束后被调用，是否校验成功和未通过校验的字段。
+  formRef.value.validate((valid)=>{
+    //valid:所有表单都通过校验 才为true
+    console.log(valid);
+  })
+}
 </script>
 
 
@@ -60,7 +67,7 @@ const rules = ({
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
+            <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
               <el-form-item prop="account" label="账户">
                 <el-input v-model="form.account" />
               </el-form-item>
@@ -72,7 +79,7 @@ const rules = ({
                   我已同意隐私条款和服务条款
                 </el-checkbox>
               </el-form-item>
-              <el-button size="large" class="subBtn">点击登录</el-button>
+              <el-button @click="doLogin" size="large" class="subBtn">点击登录</el-button>
             </el-form>
           </div>
         </div>
