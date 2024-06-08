@@ -13,8 +13,8 @@ const userStore=useUserStore()
 
 //1.准备表单对象
 const form = ref({
-  account: '',
-  password: '',
+  account: 'xiaotuxian001',
+  password: '123456',
   agree:true
 })
 
@@ -57,7 +57,7 @@ const doLogin=()=>{
     //TODO LOGIN
 
     // const res=  await loginAPI({account,password})
-    await userStore.getUserInfo({ account,password })
+    await userStore.getUserInfo({account,password})
     // console.log(res);
 
     //1.提示用户    success成功
