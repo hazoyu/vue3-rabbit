@@ -31,6 +31,14 @@ export const useCartStore=  defineStore('cart',()=>{
         const idx =cartList.value.findIndex((item)=>skuId===item.skuId)
         cartList.value.splice(idx,1)
     }
+    //单选功能
+    const singleCheck=(skuId,selected)=>{
+        //通过skuId找到要修改的那一项 然后把他的selected修改为传过来的selected
+        //find查找  Find返回的是浅拷贝 修改对象(item)的属性会改变原来(cartList)对象
+        const item=cartList.value.find((item)=>item.skuId===skuId)
+        item.selected=selected
+    }
+
     //计算属性
     //1.总的数量
     //reduce累积操作  a=a+c.count  0初始值
@@ -42,7 +50,8 @@ export const useCartStore=  defineStore('cart',()=>{
         addCart,
         delCart,
         allCount,
-        allPrice
+        allPrice,
+        singleCheck
     }
 },
 {
