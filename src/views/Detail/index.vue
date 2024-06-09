@@ -34,7 +34,7 @@ const addCart=()=>{
     cartStore.addCart({
       id:goods.value.id,
       name:goods.value.name,
-      pictures:goods.value.mainPictures[0],
+      picture:goods.value.mainPictures[0],
       price:goods.value.price,
       count:count.value,
       skuId:skuObj.skuId,
@@ -154,7 +154,7 @@ const addCart=()=>{
                     </li>
                   </ul>
                   <!-- 图片 -->
-                  <img v-for="img in goods.details.pictures" :src="img" :key="img" alt="">
+                  <img v-for="img in goods.details.picture" :src="img" :key="img" alt="">
                 </div>
               </div>
             </div>
