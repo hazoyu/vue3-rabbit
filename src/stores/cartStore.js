@@ -55,7 +55,10 @@ export const useCartStore=  defineStore('cart',()=>{
 
         
     }
-
+    // 清空购物车
+    const clearCart=()=>{
+        cartList.value=[]
+    }
    
     //单选功能
     const singleCheck=(skuId,selected)=>{
@@ -90,6 +93,7 @@ export const useCartStore=  defineStore('cart',()=>{
         delCart,
         allCheck,
         singleCheck,
+        clearCart,
         allCount,
         allPrice,
         cartList,
