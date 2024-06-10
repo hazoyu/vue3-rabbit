@@ -34,7 +34,7 @@ const confirm=()=>{
 
 //创建订单
 const createOrder= async()=>{
-  const res= await createOrderAPI({
+  const res= await createOrderAPI({ //该接口会自行清空商品
     deliveryTimeType:1,
     payType:1,
     payChannel:1,
