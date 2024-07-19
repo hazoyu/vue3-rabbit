@@ -4,7 +4,7 @@ const cartStore = useCartStore()
 
 //单选
 const singleCheck=(i,selected)=>{
-    console.log(i,selected);
+    // console.log(i,selected);
     cartStore.singleCheck(i.skuId,selected)
 }
 
@@ -49,7 +49,7 @@ const allCheck=(selected)=>{
                   </div>
                 </div>
               </td>
-              <td class="tc">
+              <td class="tc"> 
                 <p>&yen;{{ i.price }}</p>
               </td>
               <td class="tc">

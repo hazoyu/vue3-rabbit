@@ -65,6 +65,8 @@ export const useCartStore=  defineStore('cart',()=>{
         //通过skuId找到要修改的那一项 然后把他的selected修改为传过来的selected
         //find查找  Find返回的是浅拷贝 修改对象(item)的属性会改变原来(cartList)对象
         const item=cartList.value.find((item)=>item.skuId===skuId)
+        // console.log("skuId,selected",skuId,selected,item);
+        // console.log("aaaa");
         item.selected=selected
     }
 

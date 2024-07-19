@@ -50,7 +50,7 @@ const categoryStore=useCategoryStore()
   &.show {
     transition: all 0.3s linear;
     transform: none;
-    opacity: 1;
+    opacity: 1;//透明度
   }
 
   .container {

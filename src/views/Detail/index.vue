@@ -28,7 +28,7 @@ const countChange=(count)=>{
   console.log(count);
 }
 //添加购物车
-const addCart=()=>{ 
+const addCart=()=>{  
   if(skuObj.skuId){
     //规格已选择
     cartStore.addCart({
@@ -128,7 +128,7 @@ const addCart=()=>{
               <!-- 已注册为组件直接使用XtxSku -->
               <XtxSku :goods="goods" @change="skuChange"/>
               <!-- 数据组件 -->
-              <el-input-number v-model="count" @change="countChange" />
+              <el-input-number v-model="count" :min="1" @change="countChange" />
               <!-- 按钮组件 -->
               <div>
                 <el-button  size="large" class="btn" @click="addCart">

@@ -13,6 +13,7 @@ import '@/styles/common.scss'
 import {lazyPlugin} from '@/directives'
 //引入全局组件
 import {componentPlugin} from '@/components'
+
 const pinia=createPinia()
 
 
